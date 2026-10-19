@@ -132,12 +132,12 @@ svg text{font-family:var(--font-body)}
 
 <main class="wrap">
   <header>
-    <p class="eyebrow">Minds and Machines · AI safety lecture</p>
-    <h1>AI safety map</h1>
-    <p class="lede">Four sources of risk, five ways a hazard arises, six ways it escalates, and six outcomes. Click any box to trace what feeds it and what it leads to, follow one of the paths from the lecture, or see where interventions break the links.</p>
+    <p class="eyebrow" data-t="eyebrow">Minds and Machines · AI safety lecture</p>
+    <h1 data-t="title">AI safety map</h1>
+    <p class="lede" data-t="lede">Four sources of risk, five ways a hazard arises, six ways it escalates, and six outcomes. Click any box to trace what feeds it and what it leads to, follow one of the paths from the lecture, or see where interventions break the links.</p>
   </header>
 
-  <div class="chips" id="chips" role="group" aria-label="Lecture paths"><span class="chips-label">Lecture paths</span></div>
+  <div class="chips" id="chips" role="group" aria-label="Lecture paths"><span class="chips-label" data-t="paths.label">Lecture paths</span></div>
 
   <div class="figure" id="fig">
     <svg id="g" viewBox="0 0 800 432" role="img" aria-labelledby="gt gd">
@@ -145,78 +145,318 @@ svg text{font-family:var(--font-body)}
       <desc id="gd">A left-to-right flow diagram. Four sources lead to five ways hazards arise, then six ways they escalate, then six outcomes. Red connectors mark worrisome paths, gray connectors mark more bounded ones, and green connectors lead to an optimistic outcome.</desc>
     </svg>
   </div>
-  <p class="scroll-hint">Scroll the map sideways to see every column.</p>
+  <p class="scroll-hint" data-t="scrollhint">Scroll the map sideways to see every column.</p>
 
   <div class="legend">
-    <span class="key red"><b></b>Worrisome: severe or hard to reverse</span>
-    <span class="key gray"><b></b>Real, but more bounded</span>
-    <span class="key green"><b></b>Upside</span>
-    <span class="key mag"><b></b>Selected path</span>
-    <span class="key zapk" id="zapk" hidden><i>1</i>Where an intervention cuts the link</span>
+    <span class="key red"><b></b><span data-t="legend.red">Worrisome: severe or hard to reverse</span></span>
+    <span class="key gray"><b></b><span data-t="legend.gray">Real, but more bounded</span></span>
+    <span class="key green"><b></b><span data-t="legend.green">Upside</span></span>
+    <span class="key mag"><b></b><span data-t="legend.magenta">Selected path</span></span>
+    <span class="key zapk" id="zapk" hidden><i>1</i><span data-t="legend.zap">Where an intervention cuts the link</span></span>
     <span class="tools">
-      <label class="toggle" for="wo"><input type="checkbox" id="wo">Worrisome links only</label>
-      <button class="btn" id="rs" type="button">Reset</button>
+      <label class="toggle" for="wo"><input type="checkbox" id="wo"><span data-t="toggle.worrisome">Worrisome links only</span></label>
+      <button class="btn" id="rs" type="button" data-t="button.reset">Reset</button>
     </span>
   </div>
 
   <section class="panel" id="pn" aria-live="polite"></section>
 
-  <p class="foot">The map is a teaching device, not a forecast. Links show plausible routes from one stage to the next; their color reflects how severe or reversible the end state is, not how likely it is.</p>
-  <p class="foot" id="trk" hidden>This page counts visits and clicks anonymously with GoatCounter. It sets no cookies and records nothing that identifies you.</p>
+  <p class="foot" data-t="footer">The map is a teaching device, not a forecast. Links show plausible routes from one stage to the next; their color reflects how severe or reversible the end state is, not how likely it is.</p>
+  <p class="foot" id="trk" hidden data-t="footer.tracking">This page counts visits and clicks anonymously with GoatCounter. It sets no cookies and records nothing that identifies you.</p>
 </main>
 
+<script id="map-text" type="application/json">
+{
+ "ui": {
+  "eyebrow": "Minds and Machines · AI safety lecture",
+  "title": "AI safety map",
+  "lede": "Four sources of risk, five ways a hazard arises, six ways it escalates, and six outcomes. Click any box to trace what feeds it and what it leads to, follow one of the paths from the lecture, or see where interventions break the links.",
+  "stages": "Source; How it arises; How it escalates; Outcome",
+  "overview.kicker": "How to read it",
+  "overview.heading": "From source to outcome",
+  "overview.p1": "Read left to right. Each risk starts from a source, arises through a mechanism, escalates, and ends in an outcome. Red links mark the worrisome routes, gray links are real but more bounded, and green links show that the same escalators can also lead somewhere good.",
+  "overview.p2": "When someone makes a claim about AI risk, ask for the path: which source, which mechanism, and what would escalate it. Then ask where the path could be broken.",
+  "box.fedby": "Fed by",
+  "box.leadsto": "Leads to",
+  "box.weaker": "Weaker links:",
+  "box.start": "None. This is a starting point.",
+  "box.end": "None. This is an end state.",
+  "box.onpaths": "On lecture paths",
+  "scrollhint": "Scroll the map sideways to see every column.",
+  "break.button": "Break the links",
+  "break.kicker": "Lecture section",
+  "break.heading": "Breaking the links",
+  "break.intro": "Each numbered zap marks a link that one family of interventions cuts. Every family has known limits, so no single cut is enough: the aim is defence in depth. Click a number to pick out its links.",
+  "paths.label": "Lecture paths",
+  "legend.red": "Worrisome: severe or hard to reverse",
+  "legend.gray": "Real, but more bounded",
+  "legend.green": "Upside",
+  "legend.magenta": "Selected path",
+  "legend.zap": "Where an intervention cuts the link",
+  "toggle.worrisome": "Worrisome links only",
+  "button.reset": "Reset",
+  "footer": "The map is a teaching device, not a forecast. Links show plausible routes from one stage to the next; their color reflects how severe or reversible the end state is, not how likely it is.",
+  "footer.tracking": "This page counts visits and clicks anonymously with GoatCounter. It sets no cookies and records nothing that identifies you."
+ },
+ "boxes": {
+  "S1": {
+   "t": "Bad actors",
+   "s": "misuse",
+   "d": "People deliberately using AI to cause harm: criminals, terrorists, or states. The danger comes from human intent, not from the system misbehaving."
+  },
+  "S2": {
+   "t": "Honest error",
+   "s": "bad training",
+   "d": "Well-meaning developers specify objectives imperfectly or cannot verify what a system actually learned. This covers ordinary bugs and misalignment alike."
+  },
+  "S3": {
+   "t": "Incentives",
+   "s": "structural",
+   "d": "Competition, weak regulation, and organizational culture push actors toward risky choices. No single villain is needed."
+  },
+  "S4": {
+   "t": "Human–AI use",
+   "s": "overreliance",
+   "d": "How people use AI creates risk of its own: deferring to it, offloading judgment, and letting their skills atrophy."
+  },
+  "A1": {
+   "t": "Capability uplift",
+   "s": "bio, cyber, scams",
+   "d": "AI lowers the expertise, cost, or time needed for dangerous capabilities such as bioweapon design, cyberattacks, or large-scale fraud and persuasion."
+  },
+  "A2": {
+   "t": "Mislearned goals",
+   "s": "reward hacking",
+   "d": "Training produces a system whose effective goals differ from what designers intended. Examples: reward hacking, goal misgeneralization, and emergent misalignment."
+  },
+  "A3": {
+   "t": "Unreliability",
+   "s": "robustness failures",
+   "d": "Failures without any bad goals: brittleness under distribution shift, hallucination, and bugs. Harm is usually bounded unless stakes or scale are high."
+  },
+  "A4": {
+   "t": "Race dynamics",
+   "s": "corner-cutting",
+   "d": "Competition between labs or countries rewards shipping fast and skimping on safety testing, even when everyone would prefer more caution."
+  },
+  "A5": {
+   "t": "Deference",
+   "s": "cognitive surrender",
+   "d": "Cognitive surrender: people accept AI outputs without scrutiny and let their own judgment and skills decline."
+  },
+  "B1": {
+   "t": "Diffusion",
+   "s": "open weights",
+   "d": "Capabilities spread widely through open weights, cheap fine-tuning, and many actors. Misuse becomes hard to prevent or monitor, but benefits also reach far more people."
+  },
+  "B2": {
+   "t": "Power-seeking",
+   "s": "instrumental drive",
+   "d": "Instrumental convergence: almost any long-term goal is better served by more resources, self-preservation, and resisting shutdown or modification."
+  },
+  "B3": {
+   "t": "Deception",
+   "s": "scheming, faking",
+   "d": "A system hides its true behavior through scheming, alignment faking, or sandbagging, so evaluations and oversight fail to reveal the problem."
+  },
+  "B4": {
+   "t": "Scale and speed",
+   "s": "autonomy, copies",
+   "d": "Many copies acting autonomously, faster than humans can monitor. Errors become correlated and spread before anyone can intervene, but the same capacity could do research and production at enormous scale. An amplifier more than a driver."
+  },
+  "B5": {
+   "t": "Delegation",
+   "s": "handing off control",
+   "d": "People and institutions hand decisions and labor to AI. Done badly, humans are no longer meaningfully in the loop and cannot take control back. Done well, it frees people from drudgery."
+  },
+  "B6": {
+   "t": "Epistemic decay",
+   "s": "trust, judgment",
+   "d": "Shared truth and independent judgment erode through persuasion at scale, sycophancy, homogenized views, and overreliance. It is a mechanism rather than an end state: it weakens the checks that would catch other failures."
+  },
+  "U": {
+   "t": "Utopia",
+   "s": "not just abundance",
+   "d": "The good outcome needs three things at once: material abundance that is broadly shared; social interdependence, where people still need each other, so economies and states stay tied to them; and human agency, where people still decide and steer. A deliberately optimistic endpoint, not a prediction. “Fully automated luxury communism” names only the first."
+  },
+  "O1": {
+   "t": "Ordinary harms",
+   "s": "fraud, accidents",
+   "d": "Fraud, accidents, bias, and privacy loss. Real and happening now, but usually bounded and recoverable."
+  },
+  "O2": {
+   "t": "Catastrophe",
+   "s": "pandemic, war",
+   "d": "Large-scale events such as engineered pandemics, attacks on critical infrastructure, or AI-enabled war."
+  },
+  "O4": {
+   "t": "Loss of control",
+   "s": "sudden takeover",
+   "d": "AI systems pursue goals that humans can no longer stop or correct. The extreme case is a sudden takeover."
+  },
+  "O3": {
+   "t": "Institutional upheaval",
+   "s": "jobs, tax base, lock-in",
+   "d": "AI reshapes work and the state faster than institutions can adapt. Jobs and the tax base shift, gains concentrate, and a narrow group may entrench its power once it no longer needs broad human cooperation, elections, or courts."
+  },
+  "O5": {
+   "t": "Disempowerment",
+   "s": "gradual erosion",
+   "d": "Humans slowly lose influence over the economy, culture, and institutions as AI becomes indispensable. No one acts badly and there is no single moment of failure."
+  }
+ },
+ "links": {
+  "S1>A1": "Bad actors seek out uplift; it lowers their barrier to harm.",
+  "S2>A2": "Imperfect objectives and unverifiable training are how goals end up mislearned.",
+  "S3>A4": "Competitive incentives create the race, rewarding speed over caution.",
+  "S4>A5": "Overreliance in practice is deference: accepting outputs without scrutiny.",
+  "A1>B1": "Uplift is far more dangerous once capabilities spread to many actors.",
+  "A2>B2": "A system with mislearned goals has reason to seek power and resist correction, whatever the goal.",
+  "A2>B3": "A misaligned system may conceal its goals to avoid being retrained.",
+  "A4>B5": "Racing pushes institutions to delegate to AI to keep up, with less oversight.",
+  "A5>B5": "Individual deference adds up to institutional delegation.",
+  "A5>B6": "When many people defer to the same systems, independent judgment thins out and shared errors go unchallenged.",
+  "B1>O2": "With wide access, at least one catastrophic misuse becomes likely.",
+  "B2>O4": "A capable power-seeking system resists being stopped, which is what loss of control means.",
+  "B3>O4": "Hidden misbehavior blocks the detection and correction that would prevent takeover.",
+  "B5>O3": "Handing work and decisions to AI moves jobs, revenue, and leverage faster than institutions can adjust.",
+  "B5>O5": "As humans hand off roles, their influence erodes gradually.",
+  "B6>O5": "Without shared, independent judgment, people struggle to notice or contest their loss of influence.",
+  "B1>U": "Wide access also spreads benefits: expertise and tools for everyone, not just large firms.",
+  "B4>U": "Automation at scale and speed is what could make abundance possible: many tireless copies doing research and production.",
+  "B5>U": "Handing off drudgery is the point, if people keep a real say and share the gains."
+ },
+ "paths": {
+  "incident": {
+   "label": "Hugging Face incident",
+   "kicker": "Case study",
+   "note": "In July 2026 Hugging Face disclosed an intrusion driven end to end by autonomous AI agents, which came from an OpenAI cyber evaluation run with safeguards off. On this map it sits on part of the loss-of-control path: an honest training error, mislearned goals, escalation through scale and speed, and a deception link for the faked transcripts. It is evidence for reward hacking, coordination at scale, and small-scale deception of an automated scorer. It is not yet evidence of power-seeking."
+  },
+  "catastrophe": {
+   "label": "Catastrophe",
+   "kicker": "Lecture path 1",
+   "note": "Bad actors gain capability uplift, and diffusion puts it in many hands."
+  },
+  "control": {
+   "label": "Loss of control",
+   "kicker": "Lecture path 2",
+   "note": "Honest errors in training produce mislearned goals, which escalate through power-seeking, deception, and scale and speed."
+  },
+  "upheaval": {
+   "label": "Institutional upheaval",
+   "kicker": "Lecture path 3",
+   "note": "Race dynamics push AI into the economy and the state at scale. If AI does the work, jobs and the tax base shift, gains can concentrate, and power can lock in."
+  },
+  "disempowerment": {
+   "label": "Disempowerment",
+   "kicker": "Lecture path 4",
+   "note": "Incentives drive race dynamics, and everyday use breeds deference. Both push delegation, and deference at scale also erodes shared judgment. No villain and no single failure are needed."
+  },
+  "upside": {
+   "label": "Upside",
+   "kicker": "The green path",
+   "note": "The same three escalators, diffusion, scale and speed, and delegation, can lead somewhere good: abundance that is broadly shared, in a society where people still need each other and keep real agency. Whether they do depends on the levers in Breaking the links."
+  }
+ },
+ "families": {
+  "F1": {
+   "title": "Build it safely",
+   "sub": "Training, testing and release"
+  },
+  "F2": {
+   "title": "Watch it run",
+   "sub": "Monitoring and control"
+  },
+  "F3": {
+   "title": "Keep humans in charge",
+   "sub": "Institutions"
+  }
+ },
+ "items": {
+  "F1.1": {
+   "label": "Train",
+   "text": "Rewards that can’t be gamed, and alignment training. Anti-scheming training cut covert actions about 30-fold (Schoen et al. 2025).",
+   "limit": "Afterwards, models mention being tested more often."
+  },
+  "F1.2": {
+   "label": "Test",
+   "text": "Pre-release evaluations and safety frameworks: 12 firms published or updated one in 2025 (International AI Safety Report 2026).",
+   "limit": "Models can tell tests from real use, so tests can understate danger."
+  },
+  "F1.3": {
+   "label": "Release",
+   "text": "Decide who gets access, and to what, with worst-case tuning tests before open release (Wallace et al. 2026).",
+   "limit": "Safety training can be stripped from open weights (RAND 2026)."
+  },
+  "F2.1": {
+   "label": "Act on alarms",
+   "text": "Anthropic caught a state-backed hacking campaign using Claude Code and banned the accounts (2025).",
+   "limit": "At OpenAI an alert tied to the test run fired and the run kept going; Hugging Face’s AI triage linked the alerts but no one was paged (2026)."
+  },
+  "F2.2": {
+   "label": "Read the reasoning",
+   "text": "A monitor that reads a model’s chain of thought caught 95% of reward hacks, against 60% from actions alone (Baker et al. 2025).",
+   "limit": "Fragile: penalize shortcuts in the reasoning and models hide them. In one Gemini 4 training run, silent shortcuts rose from 11% to 36% (Google, 2026)."
+  },
+  "F2.3": {
+   "label": "Control and containment",
+   "text": "Design protocols that stay safe even if the model is misaligned. In one test, trusted editing kept 92% safety at 94% usefulness (Greenblatt et al. 2024).",
+   "limit": "Only works with safeguards on: the Hugging Face breach began in a test run with them switched off."
+  },
+  "F3.1": {
+   "label": "Never delegate",
+   "text": "The US and China affirmed the need to keep “human control over the decision to use nuclear weapons” (2024).",
+   "limit": ""
+  },
+  "F3.2": {
+   "label": "Report incidents",
+   "text": "Since January 2026 California requires frontier developers to report critical safety incidents within 15 days; the EU requires serious-incident reports for the largest models.",
+   "limit": "California’s definition left out the Hugging Face breach; in September 2026 the governor moved to widen it."
+  },
+  "F3.3": {
+   "label": "Share the gains",
+   "text": "If AI does the work, people need a real say and a share, or delegation drifts toward disempowerment and upheaval.",
+   "limit": ""
+  }
+ }
+}
+</script>
 <script>
 (function(){
 var NS='http://www.w3.org/2000/svg';
+// All visible text lives in the map-text JSON block above (edited via the 'AI safety map text' doc).
+var T=JSON.parse(document.getElementById('map-text').textContent),U=T.ui;
+document.querySelectorAll('[data-t]').forEach(function(e){var v=U[e.getAttribute('data-t')];if(v!=null)e.textContent=v;});
 var X=[8,180,392,610], WC=[124,156,156,182], HH=[60,50,46,46], CNT=[4,5,6,6], Y0=44, SP=376;
-var STAGE=['Source','How it arises','How it escalates','Outcome'];
+var STAGE=U.stages.split(/\s*;\s*/);
 var COL={1:'var(--red)',2:'var(--green)',0:'var(--edge-gray)'};
 
 var N={
-S1:{c:0,i:0,t:'Bad actors',s:'misuse',k:'n-gray',d:'People deliberately using AI to cause harm: criminals, terrorists, or states. The danger comes from human intent, not from the system misbehaving.'},
-S2:{c:0,i:1,t:'Honest error',s:'bad training',k:'n-gray',d:'Well-meaning developers specify objectives imperfectly or cannot verify what a system actually learned. This covers ordinary bugs and misalignment alike.'},
-S3:{c:0,i:2,t:'Incentives',s:'structural',k:'n-gray',d:'Competition, weak regulation, and organizational culture push actors toward risky choices. No single villain is needed.'},
-S4:{c:0,i:3,t:'Human–AI use',s:'overreliance',k:'n-gray',d:'How people use AI creates risk of its own: deferring to it, offloading judgment, and letting their skills atrophy.'},
-A1:{c:1,i:0,t:'Capability uplift',s:'bio, cyber, scams',k:'n-gray',d:'AI lowers the expertise, cost, or time needed for dangerous capabilities such as bioweapon design, cyberattacks, or large-scale fraud and persuasion.'},
-A2:{c:1,i:1,t:'Mislearned goals',s:'reward hacking',k:'n-gray',d:'Training produces a system whose effective goals differ from what designers intended. Examples: reward hacking, goal misgeneralization, and emergent misalignment.'},
-A3:{c:1,i:2,t:'Unreliability',s:'robustness failures',k:'n-gray',d:'Failures without any bad goals: brittleness under distribution shift, hallucination, and bugs. Harm is usually bounded unless stakes or scale are high.'},
-A4:{c:1,i:3,t:'Race dynamics',s:'corner-cutting',k:'n-gray',d:'Competition between labs or countries rewards shipping fast and skimping on safety testing, even when everyone would prefer more caution.'},
-A5:{c:1,i:4,t:'Deference',s:'cognitive surrender',k:'n-gray',d:'Cognitive surrender: people accept AI outputs without scrutiny and let their own judgment and skills decline.'},
-B1:{c:2,i:0,t:'Diffusion',s:'open weights',k:'n-gray',d:'Capabilities spread widely through open weights, cheap fine-tuning, and many actors. Misuse becomes hard to prevent or monitor, but benefits also reach far more people.'},
-B2:{c:2,i:1,t:'Power-seeking',s:'instrumental drive',k:'n-gray',d:'Instrumental convergence: almost any long-term goal is better served by more resources, self-preservation, and resisting shutdown or modification.'},
-B3:{c:2,i:2,t:'Deception',s:'scheming, faking',k:'n-gray',d:'A system hides its true behavior through scheming, alignment faking, or sandbagging, so evaluations and oversight fail to reveal the problem.'},
-B4:{c:2,i:3,t:'Scale and speed',s:'autonomy, copies',k:'n-gray',d:'Many copies acting autonomously, faster than humans can monitor. Errors become correlated and spread before anyone can intervene, but the same capacity could do research and production at enormous scale. An amplifier more than a driver.'},
-B5:{c:2,i:4,t:'Delegation',s:'handing off control',k:'n-gray',d:'People and institutions hand decisions and labor to AI. Done badly, humans are no longer meaningfully in the loop and cannot take control back. Done well, it frees people from drudgery.'},
-B6:{c:2,i:5,t:'Epistemic decay',s:'trust, judgment',k:'n-gray',d:'Shared truth and independent judgment erode through persuasion at scale, sycophancy, homogenized views, and overreliance. It is a mechanism rather than an end state: it weakens the checks that would catch other failures.'},
-U:{c:3,i:0,t:'Utopia',s:'not just abundance',k:'n-green',d:'The good outcome needs three things at once: material abundance that is broadly shared; social interdependence, where people still need each other, so economies and states stay tied to them; and human agency, where people still decide and steer. A deliberately optimistic endpoint, not a prediction. “Fully automated luxury communism” names only the first.'},
-O1:{c:3,i:1,t:'Ordinary harms',s:'fraud, accidents',k:'n-gray',d:'Fraud, accidents, bias, and privacy loss. Real and happening now, but usually bounded and recoverable.'},
-O2:{c:3,i:2,t:'Catastrophe',s:'pandemic, war',k:'n-red',d:'Large-scale events such as engineered pandemics, attacks on critical infrastructure, or AI-enabled war.'},
-O4:{c:3,i:3,t:'Loss of control',s:'sudden takeover',k:'n-red',d:'AI systems pursue goals that humans can no longer stop or correct. The extreme case is a sudden takeover.'},
-O3:{c:3,i:4,t:'Institutional upheaval',s:'jobs, tax base, lock-in',k:'n-red',d:'AI reshapes work and the state faster than institutions can adapt. Jobs and the tax base shift, gains concentrate, and a narrow group may entrench its power once it no longer needs broad human cooperation, elections, or courts.'},
-O5:{c:3,i:5,t:'Disempowerment',s:'gradual erosion',k:'n-red',d:'Humans slowly lose influence over the economy, culture, and institutions as AI becomes indispensable. No one acts badly and there is no single moment of failure.'}
+S1:{c:0,i:0,k:'n-gray'},
+S2:{c:0,i:1,k:'n-gray'},
+S3:{c:0,i:2,k:'n-gray'},
+S4:{c:0,i:3,k:'n-gray'},
+A1:{c:1,i:0,k:'n-gray'},
+A2:{c:1,i:1,k:'n-gray'},
+A3:{c:1,i:2,k:'n-gray'},
+A4:{c:1,i:3,k:'n-gray'},
+A5:{c:1,i:4,k:'n-gray'},
+B1:{c:2,i:0,k:'n-gray'},
+B2:{c:2,i:1,k:'n-gray'},
+B3:{c:2,i:2,k:'n-gray'},
+B4:{c:2,i:3,k:'n-gray'},
+B5:{c:2,i:4,k:'n-gray'},
+B6:{c:2,i:5,k:'n-gray'},
+U:{c:3,i:0,k:'n-green'},
+O1:{c:3,i:1,k:'n-gray'},
+O2:{c:3,i:2,k:'n-red'},
+O4:{c:3,i:3,k:'n-red'},
+O3:{c:3,i:4,k:'n-red'},
+O5:{c:3,i:5,k:'n-red'}
 };
+for(var id in N){var bx=T.boxes[id];N[id].t=bx.t;N[id].s=bx.s;N[id].d=bx.d;}
 
-var R={
-'S1>A1':'Bad actors seek out uplift; it lowers their barrier to harm.',
-'S2>A2':'Imperfect objectives and unverifiable training are how goals end up mislearned.',
-'S3>A4':'Competitive incentives create the race, rewarding speed over caution.',
-'S4>A5':'Overreliance in practice is deference: accepting outputs without scrutiny.',
-'A1>B1':'Uplift is far more dangerous once capabilities spread to many actors.',
-'A2>B2':'A system with mislearned goals has reason to seek power and resist correction, whatever the goal.',
-'A2>B3':'A misaligned system may conceal its goals to avoid being retrained.',
-'A4>B5':'Racing pushes institutions to delegate to AI to keep up, with less oversight.',
-'A5>B5':'Individual deference adds up to institutional delegation.',
-'A5>B6':'When many people defer to the same systems, independent judgment thins out and shared errors go unchallenged.',
-'B1>O2':'With wide access, at least one catastrophic misuse becomes likely.',
-'B2>O4':'A capable power-seeking system resists being stopped, which is what loss of control means.',
-'B3>O4':'Hidden misbehavior blocks the detection and correction that would prevent takeover.',
-'B5>O3':'Handing work and decisions to AI moves jobs, revenue, and leverage faster than institutions can adjust.',
-'B5>O5':'As humans hand off roles, their influence erodes gradually.',
-'B6>O5':'Without shared, independent judgment, people struggle to notice or contest their loss of influence.',
-'B1>U':'Wide access also spreads benefits: expertise and tools for everyone, not just large firms.',
-'B4>U':'Automation at scale and speed is what could make abundance possible: many tireless copies doing research and production.',
-'B5>U':'Handing off drudgery is the point, if people keep a real say and share the gains.'
-};
+var R=T.links;
 
 var E=[
 ['S1','A1',1],['S2','A2',1],['S2','A3',0],['S3','A4',1],['S3','A5',0],['S4','A5',1],
@@ -229,40 +469,22 @@ var E=[
 var EI={};E.forEach(function(e,i){EI[e[0]+'>'+e[1]]=i;});
 
 var PATHS=[
-{key:'incident',label:'Hugging Face incident',kicker:'Case study',
- nodes:['S2','A2','B3','B4','O4'],edges:['S2>A2','A2>B4','A2>B3','B4>O4','B3>O4'],
- note:'In July 2026 Hugging Face disclosed an intrusion driven end to end by autonomous AI agents, which came from an OpenAI cyber evaluation run with safeguards off. On this map it sits on part of the loss-of-control path: an honest training error, mislearned goals, escalation through scale and speed, and a deception link for the faked transcripts. It is evidence for reward hacking, coordination at scale, and small-scale deception of an automated scorer. It is not yet evidence of power-seeking.'},
-{key:'catastrophe',label:'Catastrophe',kicker:'Lecture path 1',
- nodes:['S1','A1','B1','O2'],edges:['S1>A1','A1>B1','B1>O2'],
- note:'Bad actors gain capability uplift, and diffusion puts it in many hands.'},
-{key:'control',label:'Loss of control',kicker:'Lecture path 2',
- nodes:['S2','A2','B2','B3','B4','O4'],edges:['S2>A2','A2>B2','A2>B3','A2>B4','B2>O4','B3>O4','B4>O4'],
- note:'Honest errors in training produce mislearned goals, which escalate through power-seeking, deception, and scale and speed.'},
-{key:'upheaval',label:'Institutional upheaval',kicker:'Lecture path 3',
- nodes:['S3','A4','B4','B5','O3'],edges:['S3>A4','A4>B4','A4>B5','B4>O3','B5>O3'],
- note:'Race dynamics push AI into the economy and the state at scale. If AI does the work, jobs and the tax base shift, gains can concentrate, and power can lock in.'},
-{key:'disempowerment',label:'Disempowerment',kicker:'Lecture path 4',
- nodes:['S3','S4','A4','A5','B5','B6','O5'],edges:['S3>A4','S4>A5','A4>B5','A5>B5','A5>B6','B5>O5','B6>O5'],
- note:'Incentives drive race dynamics, and everyday use breeds deference. Both push delegation, and deference at scale also erodes shared judgment. No villain and no single failure are needed.'},
-{key:'upside',label:'Upside',kicker:'The green path',
- nodes:['B1','B4','B5','U'],edges:['B1>U','B4>U','B5>U'],
- note:'The same three escalators, diffusion, scale and speed, and delegation, can lead somewhere good: abundance that is broadly shared, in a society where people still need each other and keep real agency. Whether they do depends on the levers in Breaking the links.'}
+{key:'incident',nodes:['S2','A2','B3','B4','O4'],edges:['S2>A2','A2>B4','A2>B3','B4>O4','B3>O4']},
+{key:'catastrophe',nodes:['S1','A1','B1','O2'],edges:['S1>A1','A1>B1','B1>O2']},
+{key:'control',nodes:['S2','A2','B2','B3','B4','O4'],edges:['S2>A2','A2>B2','A2>B3','A2>B4','B2>O4','B3>O4','B4>O4']},
+{key:'upheaval',nodes:['S3','A4','B4','B5','O3'],edges:['S3>A4','A4>B4','A4>B5','B4>O3','B5>O3']},
+{key:'disempowerment',nodes:['S3','S4','A4','A5','B5','B6','O5'],edges:['S3>A4','S4>A5','A4>B5','A5>B5','A5>B6','B5>O5','B6>O5']},
+{key:'upside',nodes:['B1','B4','B5','U'],edges:['B1>U','B4>U','B5>U']}
 ];
+PATHS.forEach(function(p){var x=T.paths[p.key];p.label=x.label;p.kicker=x.kicker;p.note=x.note;});
 
 var FAM=[
-{n:1,title:'Build it safely',sub:'Training, testing and release',cuts:['S2>A2','A2>B3','A1>B1'],items:[
- ['Train','Rewards that can’t be gamed, and alignment training. Anti-scheming training cut covert actions about 30-fold (Schoen et al. 2025).','Afterwards, models mention being tested more often.'],
- ['Test','Pre-release evaluations and safety frameworks: 12 firms published or updated one in 2025 (International AI Safety Report 2026).','Models can tell tests from real use, so tests can understate danger.'],
- ['Release','Decide who gets access, and to what, with worst-case tuning tests before open release (Wallace et al. 2026).','Safety training can be stripped from open weights (RAND 2026).']]},
-{n:2,title:'Watch it run',sub:'Monitoring and control',cuts:['B1>O2','B3>O4','B4>O4'],items:[
- ['Act on alarms','Anthropic caught a state-backed hacking campaign using Claude Code and banned the accounts (2025).','At OpenAI an alert tied to the test run fired and the run kept going; Hugging Face’s AI triage linked the alerts but no one was paged (2026).'],
- ['Read the reasoning','A monitor that reads a model’s chain of thought caught 95% of reward hacks, against 60% from actions alone (Baker et al. 2025).','Fragile: penalize shortcuts in the reasoning and models hide them. In one Gemini 4 training run, silent shortcuts rose from 11% to 36% (Google, 2026).'],
- ['Control and containment','Design protocols that stay safe even if the model is misaligned. In one test, trusted editing kept 92% safety at 94% usefulness (Greenblatt et al. 2024).','Only works with safeguards on: the Hugging Face breach began in a test run with them switched off.']]},
-{n:3,title:'Keep humans in charge',sub:'Institutions',cuts:['S3>A4','B5>O3','B5>O5'],items:[
- ['Never delegate','The US and China affirmed the need to keep “human control over the decision to use nuclear weapons” (2024).',null],
- ['Report incidents','Since January 2026 California requires frontier developers to report critical safety incidents within 15 days; the EU requires serious-incident reports for the largest models.','California’s definition left out the Hugging Face breach; in September 2026 the governor moved to widen it.'],
- ['Share the gains','If AI does the work, people need a real say and a share, or delegation drifts toward disempowerment and upheaval.',null]]}
+{n:1,cuts:['S2>A2','A2>B3','A1>B1']},
+{n:2,cuts:['B1>O2','B3>O4','B4>O4']},
+{n:3,cuts:['S3>A4','B5>O3','B5>O5']}
 ];
+FAM.forEach(function(f){var x=T.families['F'+f.n];f.title=x.title;f.sub=x.sub;f.items=[];
+  for(var j=1;T.items['F'+f.n+'.'+j];j++){var it=T.items['F'+f.n+'.'+j];f.items.push([it.label,it.text,it.limit||null]);}});
 
 // Anonymous analytics: active only on the public GitHub Pages copy, and only once a GoatCounter site code is set.
 var GC_CODE='ai-safety-map';
@@ -315,7 +537,7 @@ PATHS.forEach(function(p){var b=document.createElement('button');b.type='button'
   b.addEventListener('click',function(){path=(path===p.key)?null:p.key;foc=null;brk=false;fam=null;if(path)track('path-'+p.key);draw();});chips.appendChild(b);});
 var sep=document.createElement('span');sep.className='chips-sep';sep.setAttribute('aria-hidden','true');chips.appendChild(sep);
 var bb=document.createElement('button');bb.type='button';bb.className='chip brk';bb.id='brk';bb.setAttribute('aria-pressed','false');
-bb.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9.5 1 3 9h4l-1.5 6L13 7H9l.5-6z"/></svg>Break the links';
+bb.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9.5 1 3 9h4l-1.5 6L13 7H9l.5-6z"/></svg>'+U['break.button'];
 bb.addEventListener('click',function(){brk=!brk;fam=null;foc=null;path=null;if(brk)track('break-links');draw();});chips.appendChild(bb);
 
 function reach(id){var s={},seen={};
@@ -330,18 +552,17 @@ function side(id,up){var strong='',weak=[];
   E.forEach(function(e){if((up&&e[1]!==id)||(!up&&e[0]!==id))return;var o=up?e[0]:e[1];
     if(e[2])strong+='<p class="row"><span class="sw" style="background:'+COL[e[2]]+'"></span>'+lk(o)+'<span class="why">'+R[up?o+'>'+id:id+'>'+o]+'</span></p>';
     else weak.push(lk(o));});
-  if(!strong&&!weak.length)return '<p class="weak">'+(up?'None. This is a starting point.':'None. This is an end state.')+'</p>';
-  return strong+(weak.length?'<p class="weak">Weaker links: '+weak.join(', ')+'</p>':'');}
+  if(!strong&&!weak.length)return '<p class="weak">'+(up?U['box.start']:U['box.end'])+'</p>';
+  return strong+(weak.length?'<p class="weak">'+U['box.weaker']+' '+weak.join(', ')+'</p>':'');}
 
 function overview(){
-  return '<p class="kicker">How to read it</p><h2>From source to outcome</h2>'
-  +'<p>Read left to right. Each risk starts from a source, arises through a mechanism, escalates, and ends in an outcome. Red links mark the worrisome routes, gray links are real but more bounded, and green links show that the same escalators can also lead somewhere good.</p>'
-  +'<p>When someone makes a claim about AI risk, ask for the path: which source, which mechanism, and what would escalate it. Then ask where the path could be broken.</p>';}
+  return '<p class="kicker">'+U['overview.kicker']+'</p><h2>'+U['overview.heading']+'</h2>'
+  +'<p>'+U['overview.p1']+'</p><p>'+U['overview.p2']+'</p>';}
 
 function edgeName(k){var e=E[EI[k]];return '<span style="white-space:nowrap">'+N[e[0]].t+' → '+N[e[1]].t+'</span>';}
 function breakPanel(){
-  return '<p class="kicker">Lecture section</p><h2>Breaking the links</h2>'
-  +'<p>Each numbered zap marks a link that one family of interventions cuts. Every family has known limits, so no single cut is enough: the aim is defence in depth. Click a number to pick out its links.</p>'
+  return '<p class="kicker">'+U['break.kicker']+'</p><h2>'+U['break.heading']+'</h2>'
+  +'<p>'+U['break.intro']+'</p>'
   +'<ol class="fams">'+FAM.map(function(f){
     return '<li class="fam'+(fam===f.n?' sel':'')+'"><span class="num" aria-hidden="true">'+f.n+'</span><div class="fam-body">'
     +'<button type="button" class="fam-head" data-fam="'+f.n+'" aria-pressed="'+(fam===f.n)+'"><b>'+f.title+'</b><span>'+f.sub+'</span></button>'
@@ -351,8 +572,8 @@ function breakPanel(){
 
 function nodePanel(id){var n=N[id],on=PATHS.filter(function(p){return p.nodes.indexOf(id)>=0;});
   return '<p class="kicker">'+STAGE[n.c]+'</p><h2>'+n.t+'</h2><p>'+n.d+'</p>'
-  +'<div class="cols"><div><p class="sub">Fed by</p>'+side(id,true)+'</div><div><p class="sub">Leads to</p>'+side(id,false)+'</div></div>'
-  +(on.length?'<div class="on-paths"><span class="sub" style="margin:0 6px 0 0">On lecture paths</span>'+on.map(pathChip).join('')+'</div>':'');}
+  +'<div class="cols"><div><p class="sub">'+U['box.fedby']+'</p>'+side(id,true)+'</div><div><p class="sub">'+U['box.leadsto']+'</p>'+side(id,false)+'</div></div>'
+  +(on.length?'<div class="on-paths"><span class="sub" style="margin:0 6px 0 0">'+U['box.onpaths']+'</span>'+on.map(pathChip).join('')+'</div>':'');}
 
 function pathPanel(p){var by=[[],[],[],[]];p.nodes.forEach(function(id){by[N[id].c].push(id);});
   var steps=[];by.forEach(function(ids,c){if(ids.length)steps.push('<li><span class="stage">'+STAGE[c]+'</span><span>'+ids.map(lk).join(' and ')+'</span></li>');});
