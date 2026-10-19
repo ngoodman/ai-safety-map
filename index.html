@@ -221,87 +221,87 @@ svg text{font-family:var(--font-body)}
   },
   "A1": {
    "t": "Capability uplift",
-   "s": "bio, cyber, scams",
+   "s": "",
    "d": "AI lowers the expertise, cost, or time needed for dangerous capabilities such as bioweapon design, cyberattacks, or large-scale fraud and persuasion."
   },
   "A2": {
    "t": "Mislearned goals",
-   "s": "reward hacking",
+   "s": "",
    "d": "Training produces a system whose effective goals differ from what designers intended. Examples: reward hacking, goal misgeneralization, and emergent misalignment."
   },
   "A3": {
    "t": "Unreliability",
-   "s": "robustness failures",
+   "s": "",
    "d": "Failures without any bad goals: brittleness under distribution shift, hallucination, and bugs. Harm is usually bounded unless stakes or scale are high."
   },
   "A4": {
    "t": "Race dynamics",
-   "s": "corner-cutting",
+   "s": "",
    "d": "Competition between labs or countries rewards shipping fast and skimping on safety testing, even when everyone would prefer more caution."
   },
   "A5": {
-   "t": "Deference",
-   "s": "cognitive surrender",
-   "d": "Cognitive surrender: people accept AI outputs without scrutiny and let their own judgment and skills decline."
+   "t": "Cognitive surrender",
+   "s": "",
+   "d": "People accept AI outputs without scrutiny and let their own judgment and skills decline."
   },
   "B1": {
    "t": "Diffusion",
-   "s": "open weights",
+   "s": "",
    "d": "Capabilities spread widely through open weights, cheap fine-tuning, and many actors. Misuse becomes hard to prevent or monitor, but benefits also reach far more people."
   },
   "B2": {
    "t": "Power-seeking",
-   "s": "instrumental drive",
+   "s": "",
    "d": "Instrumental convergence: almost any long-term goal is better served by more resources, self-preservation, and resisting shutdown or modification."
   },
   "B3": {
    "t": "Deception",
-   "s": "scheming, faking",
+   "s": "",
    "d": "A system hides its true behavior through scheming, alignment faking, or sandbagging, so evaluations and oversight fail to reveal the problem."
   },
   "B4": {
    "t": "Scale and speed",
-   "s": "autonomy, copies",
+   "s": "",
    "d": "Many copies acting autonomously, faster than humans can monitor. Errors become correlated and spread before anyone can intervene, but the same capacity could do research and production at enormous scale. An amplifier more than a driver."
   },
   "B5": {
    "t": "Delegation",
-   "s": "handing off control",
+   "s": "",
    "d": "People and institutions hand decisions and labor to AI. Done badly, humans are no longer meaningfully in the loop and cannot take control back. Done well, it frees people from drudgery."
   },
   "B6": {
    "t": "Epistemic decay",
-   "s": "trust, judgment",
+   "s": "",
    "d": "Shared truth and independent judgment erode through persuasion at scale, sycophancy, homogenized views, and overreliance. It is a mechanism rather than an end state: it weakens the checks that would catch other failures."
   },
   "U": {
    "t": "Utopia",
-   "s": "not just abundance",
+   "s": "",
    "d": "The good outcome needs three things at once: material abundance that is broadly shared; social interdependence, where people still need each other, so economies and states stay tied to them; and human agency, where people still decide and steer. A deliberately optimistic endpoint, not a prediction. “Fully automated luxury communism” names only the first."
   },
   "O1": {
    "t": "Ordinary harms",
-   "s": "fraud, accidents",
+   "s": "",
    "d": "Fraud, accidents, bias, and privacy loss. Real and happening now, but usually bounded and recoverable."
   },
   "O2": {
    "t": "Catastrophe",
-   "s": "pandemic, war",
+   "s": "",
    "d": "Large-scale events such as engineered pandemics, attacks on critical infrastructure, or AI-enabled war."
   },
   "O4": {
    "t": "Loss of control",
-   "s": "sudden takeover",
+   "s": "",
    "d": "AI systems pursue goals that humans can no longer stop or correct. The extreme case is a sudden takeover."
   },
   "O3": {
    "t": "Institutional upheaval",
-   "s": "jobs, tax base, lock-in",
+   "s": "",
    "d": "AI reshapes work and the state faster than institutions can adapt. Jobs and the tax base shift, gains concentrate, and a narrow group may entrench its power once it no longer needs broad human cooperation, elections, or courts."
   },
   "O5": {
-   "t": "Disempowerment",
-   "s": "gradual erosion",
+   "t": "Gradual disempowerment",
+   "s": "",
    "d": "Humans slowly lose influence over the economy, culture, and institutions as AI becomes indispensable. No one acts badly and there is no single moment of failure."
   }
  },
@@ -427,7 +427,7 @@ var NS='http://www.w3.org/2000/svg';
 // All visible text lives in the map-text JSON block above (edited via the 'AI safety map text' doc).
 var T=JSON.parse(document.getElementById('map-text').textContent),U=T.ui;
 document.querySelectorAll('[data-t]').forEach(function(e){var v=U[e.getAttribute('data-t')];if(v!=null)e.textContent=v;});
-var X=[8,180,392,610], WC=[124,156,156,182], HH=[46,50,46,46], CNT=[4,5,6,6], Y0=44, SP=376;
+var X=[8,180,392,610], WC=[124,156,156,182], HH=[40,40,40,40], CNT=[4,5,6,6], Y0=44, SP=376;
 var STAGE=U.stages.split(/\s*;\s*/);
 var COL={1:'var(--red)',2:'var(--green)',0:'var(--edge-gray)'};
 
