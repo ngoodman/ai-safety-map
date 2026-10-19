@@ -394,14 +394,14 @@ svg text{font-family:var(--font-body)}
    "limit": "At OpenAI an alert tied to the test run fired and the run kept going; Hugging Face’s AI triage linked the alerts but no one was paged (2026)."
   },
   "F2.2": {
-   "label": "Read the reasoning",
+   "label": "Read model internals",
    "text": "A monitor that reads a model’s chain of thought caught 95% of reward hacks, against 60% from actions alone (Baker et al. 2025).",
    "limit": "Fragile: penalize shortcuts in the reasoning and models hide them. In one Gemini 4 training run, silent shortcuts rose from 11% to 36% (Google, 2026)."
   },
   "F2.3": {
    "label": "Control and containment",
-   "text": "Design protocols that stay safe even if the model is misaligned. In one test, trusted editing kept 92% safety at 94% usefulness (Greenblatt et al. 2024).",
-   "limit": "Only works with safeguards on: the Hugging Face breach began in a test run with them switched off."
+   "text": "Design protocols that stay safe even if the model is misaligned. Sandboxes, kill switches, and protected actions. In one test, trusted editing kept 92% safety at 94% usefulness (Greenblatt et al. 2024).",
+   "limit": "Only works with safeguards on: the Hugging Face breach began in a test run with them switched off. Super intelligent agents may find ways around our containment."
   },
   "F3.1": {
    "label": "Never delegate",
